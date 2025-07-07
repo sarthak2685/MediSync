@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../Doctor/DocotrSidebar";
 import Header from "../Doctor/DoctorHeader";
-import config from "../../Config";
+import Config from "../../Config";
 
 const DoctorDashboard = () => {
   const [profile, setProfile] = useState({});
@@ -17,10 +17,10 @@ const DoctorDashboard = () => {
     const fetchData = async () => {
       try {
         const [profileRes, appointmentsRes] = await Promise.all([
-          axios.get(`${config.apiUrl}/doctor/profile`, {
+          axios.get(`${Config.apiUrl}/doctor/profile`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get(`${config.apiUrl}/doctor/appointments`, {
+          axios.get(`${Config.apiUrl}/doctor/appointments`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);

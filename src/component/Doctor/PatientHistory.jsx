@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import Sidebar from "../Doctor/DocotrSidebar";
 import Header from "../Doctor/DoctorHeader";
-import config from "../../Config";
+import Config from "../../Config";
 
 const PatientHistory = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -16,7 +16,7 @@ const PatientHistory = () => {
 
     setLoading(true);
     try {
-      const res = await axios.get(`${config.apiUrl}/doctor/history/${patientId}`, {
+      const res = await axios.get(`${Config.apiUrl}/doctor/history/${patientId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setHistory(res.data.history);

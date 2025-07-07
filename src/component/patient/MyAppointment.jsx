@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../patient/PatientSidebar";
 import Header from "../patient/PatientHeader";
 import axios from "axios";
-import config from "../../Config";
+import Config from "../../Config";
 
 const MyAppointments = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -22,7 +22,7 @@ const MyAppointments = () => {
   const fetchAppointments = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`${config.apiUrl}/patient/appointments`, {
+      const res = await axios.get(`${Config.apiUrl}/patient/appointments`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAppointments(res.data || []);
@@ -38,7 +38,7 @@ const MyAppointments = () => {
   const cancelAppointment = async (appointmentId) => {
     try {
       setCancelLoadingId(appointmentId);
-      await axios.delete(`${config.apiUrl}/patient/appointment/${appointmentId}`, {
+      await axios.delete(`${Config.apiUrl}/patient/appointment/${appointmentId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAppointments((prev) =>

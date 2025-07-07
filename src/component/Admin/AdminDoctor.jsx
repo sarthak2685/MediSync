@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import config from "../../Config";
+import Config from "../../Config";
 
 const AdminAppointments = () => {
   const [search, setSearch] = useState("");
@@ -18,7 +18,7 @@ const AdminAppointments = () => {
   // Fetch appointments from API
   const fetchAppointments = async () => {
     try {
-      const response = await axios.get(`${config.apiUrl}/admin/appointments`, {
+      const response = await axios.get(`${Config.apiUrl}/admin/appointments`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -46,7 +46,7 @@ const AdminAppointments = () => {
   const handleStatusUpdate = async (appointmentId, newStatus) => {
     try {
       await axios.put(
-        `${config.apiUrl}/admin/appointments/${appointmentId}`,
+        `${Config.apiUrl}/admin/appointments/${appointmentId}`,
         { status: newStatus },
         {
           headers: {

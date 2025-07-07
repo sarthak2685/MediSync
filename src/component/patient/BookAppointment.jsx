@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../patient/PatientSidebar";
 import Header from "../patient/PatientHeader";
 import axios from "axios";
-import config from "../../Config";
+import Config from "../../Config";
 
 const BookAppointment = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -23,7 +23,7 @@ const BookAppointment = () => {
 
   const fetchDoctors = async () => {
     try {
-      const res = await axios.get(`${config.apiUrl}/patient/doctors`, {
+      const res = await axios.get(`${Config.apiUrl}/patient/doctors`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDoctors(res.data || []);
@@ -34,7 +34,7 @@ const BookAppointment = () => {
 
   const fetchDoctorDetails = async (doctorId) => {
     try {
-      const res = await axios.get(`${config.apiUrl}/patient/doctor/${doctorId}`, {
+      const res = await axios.get(`${Config.apiUrl}/patient/doctor/${doctorId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDoctorDetails(res.data);
@@ -48,7 +48,7 @@ const BookAppointment = () => {
     try {
       setSelectedDoctor(doctorId);
       setLoading(true);
-      const res = await axios.get(`${config.apiUrl}/patient/doctor-schedule/${doctorId}`, {
+      const res = await axios.get(`${Config.apiUrl}/patient/doctor-schedule/${doctorId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSchedules(res.data || []);
@@ -64,7 +64,7 @@ const BookAppointment = () => {
     try {
       setLoading(true);
       await axios.post(
-        `${config.apiUrl}/patient/book-appointment`,
+        `${Config.apiUrl}/patient/book-appointment`,
         { doctorId: selectedDoctor, scheduleId },
         { headers: { Authorization: `Bearer ${token}` } }
       );

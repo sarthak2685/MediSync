@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import config from "../../Config";
+import Config from "../../Config";
 
 const DoctorNotifications = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -11,7 +11,7 @@ const DoctorNotifications = () => {
 
   const fetchNotifications = async () => {
     try {
-      const res = await axios.get(`${config.apiUrl}/doctor/notifications`, {
+      const res = await axios.get(`${Config.apiUrl}/doctor/notifications`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setNotifications(res.data || []);

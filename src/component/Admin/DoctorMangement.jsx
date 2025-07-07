@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
-import config from "../../Config";
+import Config from "../../Config";
 
 const DoctorManagement = () => {
   const [doctors, setDoctors] = useState([]);
@@ -16,7 +16,7 @@ const DoctorManagement = () => {
 
   const fetchDoctors = async () => {
     try {
-      const res = await axios.get(`${config.apiUrl}/admin/doctors`, {
+      const res = await axios.get(`${Config.apiUrl}/admin/doctors`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setDoctors(res.data || []);
@@ -34,7 +34,7 @@ const DoctorManagement = () => {
   const handleApprove = async (doctorId, isApproved) => {
     try {
       await axios.put(
-        `${config.apiUrl}/admin/approve-doctor`,
+        `${Config.apiUrl}/admin/approve-doctor`,
         { doctorId, isApproved },
         { headers: { Authorization: `Bearer ${token}` } }
       );

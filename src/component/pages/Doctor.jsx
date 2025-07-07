@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import config from "../../Config";
+import Config from "../../Config";
 
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -17,7 +17,7 @@ const Doctors = () => {
   useEffect(() => {
     const fetchDoctors = async () => {
       try {
-        const response = await fetch(`${config.apiUrl}/admin/doctors`, {
+        const response = await fetch(`${Config.apiUrl}/admin/doctors`, {
           headers: {
             "Content-Type": "application/json"
           }
@@ -43,7 +43,7 @@ const Doctors = () => {
     try {
       setSelectedDoctor(doctorId);
       setLoading(true);
-      const res = await axios.get(`${config.apiUrl}/patient/doctor-schedule/${doctorId}`, {
+      const res = await axios.get(`${Config.apiUrl}/patient/doctor-schedule/${doctorId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSchedules(res.data || []);
@@ -60,7 +60,7 @@ const Doctors = () => {
     try {
       setLoading(true);
       await axios.post(
-        `${config.apiUrl}/patient/book-appointment`,
+        `${Config.apiUrl}/patient/book-appointment`,
         { doctorId: selectedDoctor, scheduleId },
         { headers: { Authorization: `Bearer ${token}` } }
       );

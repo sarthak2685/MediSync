@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import axios from "axios";
-import config from "../../Config";
+import Config from "../../Config";
 
 const Dashboard = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -15,7 +15,7 @@ const Dashboard = () => {
     const fetchStats = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(`${config.apiUrl}/admin/dashboard-stats`, {
+        const response = await axios.get(`${Config.apiUrl}/admin/dashboard-stats`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStats(response.data);

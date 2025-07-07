@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../Doctor/DocotrSidebar";
 import Header from "../Doctor/DoctorHeader";
-import config from "../../Config";
+import Config from "../../Config";
 
 const DoctorPrescriptions = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -24,10 +24,10 @@ const DoctorPrescriptions = () => {
       try {
         setLoading(true);
         const [prescriptionsRes, patientsRes] = await Promise.all([
-          axios.get(`${config.apiUrl}/doctor/prescriptions`, {
+          axios.get(`${Config.apiUrl}/doctor/prescriptions`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get(`${config.apiUrl}/admin/patients`, {
+          axios.get(`${Config.apiUrl}/admin/patients`, {
             headers: { Authorization: `Bearer ${token}` },
           })
         ]);
@@ -58,7 +58,7 @@ const DoctorPrescriptions = () => {
 
     try {
       setLoading(true);
-      await axios.post(`${config.apiUrl}/doctor/prescription`, form, {
+      await axios.post(`${Config.apiUrl}/doctor/prescription`, form, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSuccess("Prescription added successfully");
@@ -76,7 +76,7 @@ const DoctorPrescriptions = () => {
 
   const fetchPrescriptions = async () => {
     try {
-      const res = await axios.get(`${config.apiUrl}/doctor/prescriptions`, {
+      const res = await axios.get(`${Config.apiUrl}/doctor/prescriptions`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setPrescriptions(res.data || []);

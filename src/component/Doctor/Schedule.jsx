@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../Doctor/DocotrSidebar";
 import Header from "../Doctor/DoctorHeader";
-import config from "../../Config";
+import Config from "../../Config";
 
 
 const DoctorSchedule = () => {
@@ -17,7 +17,7 @@ const DoctorSchedule = () => {
   // Fetch all schedules
   const fetchSchedules = async () => {
     try {
-      const res = await axios.get(`${config.apiUrl}/doctor/schedules`, {
+      const res = await axios.get(`${Config.apiUrl}/doctor/schedules`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSchedules(res.data || []);
@@ -36,7 +36,7 @@ const DoctorSchedule = () => {
   
     try {
       await axios.post(
-        `${config.apiUrl}/doctor/add-schedule`,
+        `${Config.apiUrl}/doctor/add-schedule`,
         { date, startTime, endTime, slotDuration },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -53,7 +53,7 @@ const DoctorSchedule = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${config.apiUrl}/doctor/schedule/${id}`, {
+      await axios.delete(`${Config.apiUrl}/doctor/schedule/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchSchedules();

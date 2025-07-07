@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "../Doctor/DocotrSidebar";
 import Header from "../Doctor/DoctorHeader";
-import config from "../../Config";
+import Config from "../../Config";
 
 const DoctorProfile = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -27,7 +27,7 @@ const DoctorProfile = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(`${config.apiUrl}/doctor/profile`, {
+        const res = await axios.get(`${Config.apiUrl}/doctor/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setProfile(res.data || {});
@@ -73,7 +73,7 @@ const DoctorProfile = () => {
   const handleUpdate = async () => {
     setUpdating(true);
     try {
-      await axios.put(`${config.apiUrl}/doctor/update-profile`, profile, {
+      await axios.put(`${Config.apiUrl}/doctor/update-profile`, profile, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEditMode(false);

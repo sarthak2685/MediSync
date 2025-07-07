@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Sidebar from "../Doctor/DocotrSidebar";
 import Header from "../Doctor/DoctorHeader";
-import config from "../../Config";
+import Config from "../../Config";
 
 const DoctorAppointments = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -11,7 +11,7 @@ const DoctorAppointments = () => {
 
   const fetchAppointments = async () => {
     try {
-      const res = await axios.get(`${config.apiUrl}/doctor/appointments`, {
+      const res = await axios.get(`${Config.apiUrl}/doctor/appointments`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setAppointments(res.data || []);
@@ -23,7 +23,7 @@ const DoctorAppointments = () => {
   const updateStatus = async (appointmentId, newStatus) => {
     try {
       await axios.post(
-        `${config.apiUrl}/doctor/appointment-status`,
+        `${Config.apiUrl}/doctor/appointment-status`,
         { appointmentId, status: newStatus },
         { headers: { Authorization: `Bearer ${token}` } }
       );

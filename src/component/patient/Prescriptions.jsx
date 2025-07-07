@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../patient/PatientSidebar";
 import Header from "../patient/PatientHeader";
 import axios from "axios";
-import config from "../../Config";
+import Config from "../../Config";
 
 const Prescriptions = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -14,7 +14,7 @@ const Prescriptions = () => {
   }, []);
 
   const getPrescriptions = async () => {
-    const res = await axios.get(`${config.apiUrl}/patient/prescriptions`, {
+    const res = await axios.get(`${Config.apiUrl}/patient/prescriptions`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     setPrescriptions(res.data   || []);

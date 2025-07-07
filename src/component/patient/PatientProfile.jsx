@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../patient/PatientSidebar";
 import Header from "../patient/PatientHeader";
 import axios from "axios";
-import config from "../../Config";
+import Config from "../../Config";
 
 const PatientProfile = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -28,7 +28,7 @@ const PatientProfile = () => {
   const getProfile = async () => {
     try {
       setIsLoading(true);
-      const res = await axios.get(`${config.apiUrl}/patient/profile`, {
+      const res = await axios.get(`${Config.apiUrl}/patient/profile`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // Format date for date input
@@ -50,7 +50,7 @@ const PatientProfile = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`${config.apiUrl}/patient/update-profile`, profile, {
+      await axios.put(`${Config.apiUrl}/patient/update-profile`, profile, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSuccess("Profile updated successfully!");

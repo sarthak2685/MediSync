@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../patient/PatientSidebar";
 import Header from "../patient/PatientHeader";
 import axios from "axios";
-import config from "../../Config";
+import Config from "../../Config";
 
 const Documents = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -15,7 +15,7 @@ const Documents = () => {
   }, []);
 
   const fetchDocuments = async () => {
-    const res = await axios.get(`${config.apiUrl}/patient/documents`, {
+    const res = await axios.get(`${Config.apiUrl}/patient/documents`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     setDocuments(res.data || []);
@@ -30,7 +30,7 @@ const Documents = () => {
     formData.append("documentName", file.name); // Add document name
   
     try {
-      await axios.post(`${config.apiUrl}/patient/upload-document`, formData, {
+      await axios.post(`${Config.apiUrl}/patient/upload-document`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",

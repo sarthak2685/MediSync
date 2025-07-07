@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import axios from "axios";
-import config from "../../Config";
+import Config from "../../Config";
 
 const AdminUser = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -17,7 +17,7 @@ const AdminUser = () => {
     try {
       const token = localStorage.getItem("token");
       const url =
-        activeTab === "doctors" ? `${config.apiUrl}/admin/doctors` : `${config.apiUrl}/admin/patients`;
+        activeTab === "doctors" ? `${Config.apiUrl}/admin/doctors` : `${Config.apiUrl}/admin/patients`;
       const response = await axios.get(url, {
         headers: { Authorization: `Bearer ${token}` },
       });
