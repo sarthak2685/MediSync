@@ -3,7 +3,6 @@ import axios from "axios";
 import Sidebar from "../Doctor/DocotrSidebar";
 import Header from "../Doctor/DoctorHeader";
 import config from "../../Config";
-
 const DoctorDashboard = () => {
   const [profile, setProfile] = useState({});
   const [appointments, setAppointments] = useState([]);
