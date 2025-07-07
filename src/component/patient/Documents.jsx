@@ -3,6 +3,7 @@ import Sidebar from "../patient/PatientSidebar";
 import Header from "../patient/PatientHeader";
 import axios from "axios";
 import config from "../../Config";
+";
 
 const Documents = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
