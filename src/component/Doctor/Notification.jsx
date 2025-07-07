@@ -3,7 +3,6 @@ import axios from "axios";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import config from "../../Config";
-";
 
 const DoctorNotifications = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);

@@ -3,7 +3,7 @@ import axios from "axios";
 import Sidebar from "../Doctor/DocotrSidebar";
 import Header from "../Doctor/DoctorHeader";
 import config from "../../Config";
-";
+
 
 const DoctorSchedule = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
